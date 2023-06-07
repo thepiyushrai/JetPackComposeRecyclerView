@@ -14,7 +14,7 @@ object DataProvider {
             imageId = R.drawable.ic_baseline_person_2_24
         )
 
-    val puppyList = listOf(
+    val studentList = listOf(
         student,
         Student(
             id = 2,
