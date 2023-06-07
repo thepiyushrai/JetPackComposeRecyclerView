@@ -20,11 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetpackcomposerecyclerview.data.DataProvider
 import com.example.jetpackcomposerecyclerview.data.model.Student
 import com.example.jetpackcomposerecyclerview.ui.theme.JetPackComposeRecyclerViewTheme
@@ -84,14 +87,17 @@ class MainActivity : ComponentActivity() {
             backgroundColor = Color.White,
             shape = RoundedCornerShape(corner = CornerSize(16.dp))
         ) {
-            Row {
+            Row(modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround) {
                 Image(
                     painter = painterResource(id = student.imageId),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
+                    contentDescription = "",
+                    contentScale = ContentScale.FillBounds,
                     modifier = Modifier
-                        .padding(8.dp)
-                        .size(54.dp)
+                        .padding(6.dp)
+                        .size(50.dp)
                         .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
                 )
                 Column(
@@ -100,7 +106,24 @@ class MainActivity : ComponentActivity() {
                         .fillMaxWidth()
                         .align(Alignment.Top)
                 ) {
-                    Text(text = student.name, style = typography.h6)
+                    Row( modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp),
+
+                        horizontalArrangement = Arrangement.SpaceEvenly
+
+                        ) {
+
+                    Text(text = student.name, style = TextStyle(
+                        fontSize = 20.sp,
+                        shadow = Shadow(
+                            color = Color.Blue,  blurRadius = 2f
+                        )
+                    )
+                    )
+                    Text(text = student.sex, style = typography.h6)
+
+                }
                     Text(text = "Age :" + student.age, style = typography.caption)
 
                 }
