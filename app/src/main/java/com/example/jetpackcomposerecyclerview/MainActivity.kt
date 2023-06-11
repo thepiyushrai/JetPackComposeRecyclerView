@@ -142,6 +142,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     JetPackComposeRecyclerViewTheme {
-        Greeting("Android")
+        Greeting("Piyush")
     }
 }
